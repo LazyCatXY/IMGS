@@ -18,10 +18,10 @@ Yue Xu, Xin Liu, Kun He, Shao Huang, Yaodong Zhao, Jie Gu.
 ### MSTAR (Moving and Stationary Target Acquisition and Recognition) Database
 
 #### Overview
-You should download the data before running the code. Put the data in ./dataset/soc. The data can be downloaded from [here](https://).
+You should download the data before running the code. Put the data in ./dataset/soc. The data can be downloaded from [here](https://1drv.ms/f/s!AkwsJ37-ugI4gQ8oPIoYImlZ4he3?e=E4CtJT).
 
 - SOC
-    - eval_1: 1000 pic choiced from 10 classes SAR test dataset, 100 pic per class. Using for generate adversarial examples and testing the transferability.
+    - eval_1: 1000 pic choices from 10 classes SAR test dataset, 100 pic per class. Using to generate adversarial examples and testing the transferability.
     - eval_data_1.pkl: The ".pkl" file of eval_1.
 
 #### Format
@@ -36,14 +36,14 @@ The raw data the following format:
         - Amplitude block
         - Phase Block
 
-Below figure is the example of amplitude block(Left) and phase block(Right)
+The below figure is an example of the amplitude block(Left) and phase block(Right)
 
 ![Example of data block: 2S1](./experiments/pic/Original.pdf)
 
 In this repository, the data is converted to ".npy" format for easy use. 
 
 ## Model
-You should download the pre-trained model before running the code. Put the data in ./experiments/net. The model can be downloaded from [here](https://).
+You should download the pre-trained model before running the code. Put the data in ./experiments/net. The model can be downloaded from [here](https://1drv.ms/f/s!AkwsJ37-ugI4gXlAOcwO3uF_pSnL?e=keIOvc).
 
 Four models are used in this repository:
 - ResNet_18
@@ -53,7 +53,7 @@ Four models are used in this repository:
 
 You can train other SAR classification models and use them for attacking experiments.
 
-## Quick Start Guide for Attcking and Adversarial Examples Generation
+## Quick Start Guide for Attacking and Adversarial Examples Generation
 
 1. You can generate the adversarial examples by running the following command:
 ```shell
@@ -63,7 +63,7 @@ $ python3 Attack.py
 
 2. The generated adversarial examples would be stored as a ".pkl" file in the directory **./dataset/soc/XX**. ("XX" is the model name). The overview image will be stored in the directory **./dataset/soc/per_img**. 
 
-3. You can run the file **'Trans_attack.py'** to evaluate the attack transferbility for target models.
+3. You can run the file **'Trans_attack.py'** to evaluate the attack transferability for target models.
 ```shell
 $ cd src 
 $ python3 Trans_attack.py
