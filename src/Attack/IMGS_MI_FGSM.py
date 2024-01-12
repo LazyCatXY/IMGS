@@ -15,7 +15,7 @@ def loss_fun(model, x, y):
     loss = torch.nn.CrossEntropyLoss()(p, y.to(model.device))
     return loss
 
-def filter(img, window_size):
+def LMSE_filter(img, window_size):
 
     amplitude = img[:, 0:1, :, :]
     phase = img[:, 1:2, :, :]
@@ -110,7 +110,7 @@ def imgs_mi_attack(model, image, label, epsilon, num_iterations = 10, momentum=1
         grad_0 = adv_image.grad.data
 
         total_grad = grad_0 + SIM(model, adv_image, label)
-        total_grad = filter(total_grad, 15)
+        total_grad = LMSE_filter(total_grad, 15)
 
         # Get the gradient
         g = momentum * g + (total_grad/(torch.mean(torch.abs(total_grad), dim=(1,2,3), keepdim=True))).cuda()
